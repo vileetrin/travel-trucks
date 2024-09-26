@@ -4,9 +4,9 @@ import css from './Navigation.module.css';
 export default function Navigation() {
   return (
     <div className={css.container}>
-      <p className={css.logo}>
+      <a href="/" className={css.logo}>
         Travel<span className={css.partlogo}>Trucks</span>
-      </p>
+      </a>
       <nav className={css.navigation}>
         <NavLink
           to="/"

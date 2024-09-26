@@ -1,33 +1,13 @@
 .navLink {
-  position: relative;
-  padding-bottom: 7px;
   text-decoration: none;
   color: #000;
   transition: color 0.3s;
-}
-
-.navLink::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 0;
-  height: 2px;
-  background-color: #000;
-  transition: width 0.3s, background-color 0.3s;
 }
 
 .navLink:hover,
 .navLinkActive,
 .navLink:active {
   color: #ff3c60;
-}
-
-.navLink:hover::after,
-.navLinkActive::after,
-.navLink:active::after {
-  width: 100%;
-  background-color: #ff3c60;
 }
 
 .container {
@@ -38,6 +18,8 @@
   justify-content: space-between;
   align-items: center;
   padding: 24px 64px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .logo {
@@ -45,6 +27,11 @@
   font-family: 'Inter';
   font-weight: 700;
   font-size: 20px;
+  text-decoration: none;
+}
+
+.logo:hover {
+  color: #101828;
 }
 
 .partlogo {
@@ -57,4 +44,5 @@
   justify-content: center;
   align-items: center;
   flex-grow: 1;
+  text-align: center;
 }
