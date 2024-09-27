@@ -1,37 +1,66 @@
 import PhotoSwiper from '../PhotoSwiper/PhotoSwiper';
+import Aquipment from '../Aquipment/Aquipment';
+import css from './Camper.module.css';
 
-export default function Camper({
-  camper: { description, gallery, location, name, price, rating, reviews },
-}) {
+import { useState } from 'react';
+
+export default function Camper({ camper }) {
+  const { description, gallery, location, name, price, rating, reviews } =
+    camper;
+
+  const [isFavourite, setIsFavourite] = useState(false);
+  const [isRated, setIsRated] = useState(false);
+
+  const handleFavouriteClick = () => {
+    setIsFavourite(prevState => !prevState);
+  };
+
+  const handleRatingClick = () => {
+    setIsRated(prevState => !prevState);
+  };
+
   return (
-    <div>
+    <div className={css.container}>
       <PhotoSwiper gallery={gallery} />
-      <h2>{name}</h2>
-      <div>
-        <p>€{price}</p>
-        <svg>
-          <use href="../../../public/icons.svg#icon-favourite"></use>
-        </svg>
-      </div>
-      <div>
-        <div>
-          <svg>
-            <use href="../../../public/icons.svg#icon-rating"></use>
-          </svg>
-          <p>
-            {rating} (
-            {reviews.length > 0 && <span>({reviews.length} Reviews)</span>})
-          </p>
+      <div className={css.content}>
+        <div className={css.header}>
+          <h2 className={css.title}>{name}</h2>
+          <div className={css.priceContainer}>
+            <p className={css.price}>€{price}</p>
+            <svg
+              className={`${css.favourite} ${
+                isFavourite ? css.favouriteActive : ''
+              }`}
+              onClick={handleFavouriteClick}
+            >
+              <use href="../../../public/icons.svg#icon-favourite"></use>
+            </svg>
+          </div>
         </div>
-        <div>
-          <svg>
-            <use href="../../../public/icons.svg#icon-location"></use>
-          </svg>
-          <p>{location}</p>
+        <div className={css.locAndRewContainer}>
+          <div className={css.ratingContainer}>
+            <svg
+              className={`${css.ratingImg} ${isRated ? css.ratingActive : ''}`}
+              onClick={handleRatingClick}
+            >
+              <use href="../../../public/icons.svg#icon-rating"></use>
+            </svg>
+            <p className={css.rewievs}>
+              {rating} (
+              {reviews.length > 0 && <span>{reviews.length} Reviews</span>})
+            </p>
+          </div>
+          <div className={css.locationContainer}>
+            <svg className={css.locationImg}>
+              <use href="../../../public/icons.svg#icon-location"></use>
+            </svg>
+            <p className={css.location}>{location}</p>
+          </div>
         </div>
+        <p className={css.text}>{description}</p>
+        <Aquipment aquipment={camper} />
+        <button className={css.button}>Show more</button>
       </div>
-      <p>{description}</p>
-      <button>Show more</button>
     </div>
   );
 }

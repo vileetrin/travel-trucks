@@ -1,0 +1,35 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.content {
+  display: flex;
+  position: relative;
+  flex: 1;
+}
+
+.locationImg {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.input {
+  border: none;
+  border-radius: 15px;
+  background-color: #f7f7f7;
+  padding: 8px 8px 8px 30px;
+  width: 360px;
+  height: 56px;
+  outline: transparent;
+}
+
+.label {
+  color: #6c717b;
+  font-size: 16px;
+}

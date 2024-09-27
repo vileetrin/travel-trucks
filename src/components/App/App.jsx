@@ -6,16 +6,15 @@ import Layout from '../Layout/Layout';
 import Loader from '../Loader/Loader';
 
 const HomePage = lazy(() => import('../../pages/HomePage/HomePage'));
+const CatalogPage = lazy(() => import('../../pages/CatalogPage/CatalogPage'));
 
 export default function App() {
   return (
     <Layout>
-      {/* {loading && <Loader />} */}
-      {/* <Suspense fallback={<Loader />}> */}
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/campers" element={<CatalogPage />} />
       </Routes>
-      {/* </Suspense> */}
     </Layout>
   );
 }

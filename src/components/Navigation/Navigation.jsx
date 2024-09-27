@@ -17,7 +17,7 @@ export default function Navigation() {
           Home
         </NavLink>
         <NavLink
-          to="/catalog"
+          to="/campers"
           className={({ isActive }) =>
             isActive ? `${css.navLink} ${css.navLinkActive}` : css.navLink
           }

@@ -1,0 +1,29 @@
+.listImg {
+  width: 20px;
+  height: 20px;
+}
+
+.listItem {
+  width: fit-content;
+  height: 48px;
+  border-radius: 100px;
+  background-color: #f2f4f7;
+  padding: 12px 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+
+.text {
+  color: #101828;
+  font-size: 16px;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 24px;
+}

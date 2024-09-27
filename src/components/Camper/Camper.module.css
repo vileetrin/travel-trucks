@@ -1,0 +1,115 @@
+.container {
+  width: 888px;
+  height: 368px;
+
+  border: 1px solid #f2f4f7;
+  border-radius: 20px;
+  padding: 24px;
+
+  display: flex;
+  justify-content: space-around;
+  gap: 24px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  color: #101828;
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0px;
+}
+
+.price {
+  color: #101828;
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0px;
+}
+
+.favourite {
+  width: 26px;
+  height: 24px;
+}
+
+.priceContainer {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.locAndRewContainer {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.ratingContainer,
+.locationContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.ratingImg,
+.locationImg {
+  width: 16px;
+  height: 16px;
+}
+
+.ratingImg {
+  fill: #f2f4f7;
+}
+
+.rewievs,
+.location {
+  color: #101828;
+  font-size: 16px;
+  margin: 0px;
+  margin-top: 8px;
+}
+
+.text {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.5;
+  max-height: 4.5em;
+
+  color: #475467;
+  font-size: 16px;
+  margin-top: 24px;
+}
+
+.button {
+  background-color: #e44848;
+  color: #ffffff;
+  font-size: 16px;
+  border: none;
+  border-radius: 100px;
+  margin-top: 24px;
+
+  width: 166px;
+  height: 56px;
+
+  transition: background-color 0.2s ease;
+}
+
+.button:hover {
+  background-color: #d84343;
+}
+
+.favouriteActive {
+  stroke: #e44848;
+}
+
+.ratingActive {
+  fill: #ffc531;
+}

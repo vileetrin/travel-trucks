@@ -1,9 +1,10 @@
 import Navigation from '../Navigation/Navigation';
 import { Toaster } from 'react-hot-toast';
+import css from './Layout.module.css';
 
 export default function Layout({ children }) {
   return (
-    <div>
+    <div className={css.container}>
       <Navigation />
       {children}{' '}
       <Toaster
