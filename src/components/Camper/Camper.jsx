@@ -21,7 +21,10 @@ export default function Camper({ camper }) {
 
   return (
     <div className={css.container}>
-      <PhotoSwiper gallery={gallery} />
+      <div className={css.imgContainer}>
+        <PhotoSwiper gallery={gallery} />
+      </div>
+
       <div className={css.content}>
         <div className={css.header}>
           <h2 className={css.title}>{name}</h2>
@@ -33,7 +36,7 @@ export default function Camper({ camper }) {
               }`}
               onClick={handleFavouriteClick}
             >
-              <use href="../../../public/icons.svg#icon-favourite"></use>
+              <use href="/public/icons.svg#icon-favourite"></use>
             </svg>
           </div>
         </div>
@@ -43,7 +46,7 @@ export default function Camper({ camper }) {
               className={`${css.ratingImg} ${isRated ? css.ratingActive : ''}`}
               onClick={handleRatingClick}
             >
-              <use href="../../../public/icons.svg#icon-rating"></use>
+              <use href="/public/icons.svg#icon-rating"></use>
             </svg>
             <p className={css.rewievs}>
               {rating} (
@@ -52,7 +55,7 @@ export default function Camper({ camper }) {
           </div>
           <div className={css.locationContainer}>
             <svg className={css.locationImg}>
-              <use href="../../../public/icons.svg#icon-location"></use>
+              <use href="/public/icons.svg#icon-location"></use>
             </svg>
             <p className={css.location}>{location}</p>
           </div>

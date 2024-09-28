@@ -1,11 +1,15 @@
+import css from './CatalogPage.module.css';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
+
 import CampersList from '../../components/CampersList/CampersList';
-import Location from '../../components/SideBar/Location/Location';
+import Loader from '../../components/Loader/Loader';
+import SideBar from '../../components/SideBar/SideBar';
+import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
+
 import { fetchCampers } from '../../redux/campers/operations';
 import { selectLoading, selectError } from '../../redux/campers/selectors';
-import Loader from '../../components/Loader/Loader';
-import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 
 export default function CatalogPage() {
   const dispatch = useDispatch();
@@ -16,11 +20,9 @@ export default function CatalogPage() {
     dispatch(fetchCampers());
   }, [dispatch]);
   return (
-    <div>
-      {isLoading && <Loader />}
-      <Location />
-      <CampersList />
-      {isError && <ErrorMessage />}
+    <div className={css.container}>
+      <SideBar />
+      {isLoading ? <Loader /> : isError ? <ErrorMessage /> : <CampersList />}
     </div>
   );
 }

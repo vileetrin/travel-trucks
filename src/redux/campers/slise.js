@@ -1,18 +1,34 @@
 import { createSlice, createSelector } from '@reduxjs/toolkit';
 import { fetchCampers } from './operations';
-import {
-  selectForm,
-  selectFilters,
-  selectLocation,
-} from '../filters/selectors';
-import { selectCampersList } from './selectors';
 
 const campersSlice = createSlice({
   name: 'campers',
   initialState: {
     items: [],
+    filteredItems: [],
+    paginatedCampers: [],
+    currentPage: 1,
+    itemsPerPage: 4,
+    totalPages: 1,
     isLoading: false,
     error: null,
+  },
+
+  reducers: {
+    setCurrentPage: (state, action) => {
+      state.currentPage = action.payload;
+      const newCampers = state.filteredItems.slice(
+        (state.currentPage - 1) * state.itemsPerPage,
+        state.currentPage * state.itemsPerPage
+      );
+      state.paginatedCampers = [...state.paginatedCampers, ...newCampers];
+    },
+    setItemsPerPage: (state, action) => {
+      state.itemsPerPage = action.payload;
+      state.totalPages = Math.ceil(
+        state.filteredItems.length / state.itemsPerPage
+      );
+    },
   },
 
   extraReducers: builder => {
@@ -25,6 +41,12 @@ const campersSlice = createSlice({
         state.isLoading = false;
         state.error = null;
         state.items = action.payload.items;
+        state.filteredItems = state.items;
+        state.totalPages = Math.ceil(
+          state.filteredItems.length / state.itemsPerPage
+        );
+        const initialCampers = state.filteredItems.slice(0, state.itemsPerPage);
+        state.paginatedCampers = initialCampers;
       })
       .addCase(fetchCampers.rejected, (state, action) => {
         state.isLoading = false;
@@ -33,21 +55,6 @@ const campersSlice = createSlice({
   },
 });
 
-// export const selectFilteredCampers = createSelector(
-//   [selectCampersList, selectForm, selectFilters, selectLocation],
-//   (campers, form, filters, location) => {
-//     return campers.filter(camper => {
-//       const matchesForm = form ? camper.form === form : true;
-//       const matchesFeatures = Object.keys(filters).every(key => {
-//         return filters[key] === false || camper[key] === filters[key];
-//       });
-//       const matchesLocation = location
-//         ? camper.location.toLowerCase().includes(location.toLowerCase())
-//         : true;
-
-//       return matchesForm && matchesFeatures && matchesLocation;
-//     });
-//   }
-// );
+export const { setCurrentPage, setItemsPerPage } = campersSlice.actions;
 
 export const campersReducer = campersSlice.reducer;

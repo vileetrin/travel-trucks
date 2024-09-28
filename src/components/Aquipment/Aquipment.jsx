@@ -18,7 +18,7 @@ export default function Aquipment({ aquipment }) {
           item.condition && (
             <li key={index} className={css.listItem}>
               <svg className={css.listImg}>
-                <use href={`../../../public/icons.svg${item.icon}`}></use>
+                <use href={`/public/icons.svg${item.icon}`}></use>
               </svg>
               <span className={css.text}>{item.name}</span>
             </li>
@@ -28,7 +28,7 @@ export default function Aquipment({ aquipment }) {
       {transmission && (
         <li className={css.listItem}>
           <svg className={css.listImg}>
-            <use href="../../../public/icons.svg#icon-automatic"></use>
+            <use href="/public/icons.svg#icon-automatic"></use>
           </svg>
           <span>{transmission}</span>
         </li>
@@ -36,7 +36,7 @@ export default function Aquipment({ aquipment }) {
       {engine && (
         <li className={css.listItem}>
           <svg className={css.listImg}>
-            <use href="../../../public/icons.svg#icon-petrol"></use>
+            <use href="/public/icons.svg#icon-petrol"></use>
           </svg>
           <span>{engine}</span>
         </li>

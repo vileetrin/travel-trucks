@@ -1,17 +1,29 @@
 import css from './CampersList.module.css';
 import Camper from '../Camper/Camper';
-import { useSelector } from 'react-redux';
-// import { selectFilteredCampers } from '../../redux/campers/slise';
+import { useSelector, useDispatch } from 'react-redux';
 import { selectCampersList } from '../../redux/campers/selectors';
+import {
+  selectPaginatedCampers,
+  selectCurrentPage,
+  selectTotalPages,
+} from '../../redux/campers/selectors.js';
+import { setCurrentPage } from '../../redux/campers/slise';
 
 export default function CampersList() {
-  //   const filteredCampers = useSelector(selectFilteredCampers);
-  const campers = useSelector(selectCampersList);
-  //   console.log(campers);
+  const dispatch = useDispatch();
+  const campers = useSelector(selectPaginatedCampers);
+  const currentPage = useSelector(selectCurrentPage);
+  const totalPages = useSelector(selectTotalPages);
+
+  const handleLoadMore = () => {
+    if (currentPage < totalPages) {
+      dispatch(setCurrentPage(currentPage + 1));
+    }
+  };
 
   return (
-    <>
-      <ul>
+    <div className={css.container}>
+      <ul className={css.list}>
         {campers.map(camper => {
           return (
             <li key={camper.id}>
@@ -20,6 +32,11 @@ export default function CampersList() {
           );
         })}
       </ul>
-    </>
+      {currentPage < totalPages && (
+        <button onClick={handleLoadMore} className={css.btn}>
+          Load more
+        </button>
+      )}
+    </div>
   );
 }

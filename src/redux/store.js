@@ -5,6 +5,6 @@ import { filterReducer } from './filters/slice';
 export const store = configureStore({
   reducer: {
     campers: campersReducer,
-    // filters: filterReducer,
+    filters: filterReducer,
   },
 });

@@ -3,46 +3,52 @@ import { createSlice } from '@reduxjs/toolkit';
 const filterSlice = createSlice({
   name: 'filters',
   initialState: {
+    location: '',
     form: '',
-    filters: {
-      AC: false,
+    equipment: {
+      automatic: false,
+      petrol: false,
+      ac: false,
       bathroom: false,
       kitchen: false,
-      TV: false,
-      transmission: '',
+      tv: false,
+      radio: false,
+      refrigerator: false,
+      microwave: false,
+      gas: false,
+      water: false,
     },
-    location: '',
   },
   reducers: {
-    setFormFilter: (state, action) => {
-      state.form = action.payload;
-    },
-    setFeatureFilter: (state, action) => {
-      const { key, value } = action.payload;
-      state.filters[key] = value;
-    },
-    setLocationFilter: (state, action) => {
+    setLocation(state, action) {
       state.location = action.payload;
     },
-    resetFilters: state => {
+    setForm(state, action) {
+      state.form = action.payload;
+    },
+    setEquipment(state, action) {
+      state.equipment = action.payload;
+    },
+    clearFilters(state) {
+      state.location = '';
       state.form = '';
-      state.filters = {
-        AC: false,
+      state.equipment = {
+        automatic: false,
+        petrol: false,
+        ac: false,
         bathroom: false,
         kitchen: false,
-        TV: false,
-        transmission: '',
+        tv: false,
+        radio: false,
+        refrigerator: false,
+        microwave: false,
+        gas: false,
+        water: false,
       };
-      state.location = '';
     },
   },
 });
 
-export const {
-  setFormFilter,
-  setFeatureFilter,
-  setLocationFilter,
-  resetFilters,
-} = filterSlice.actions;
-
+export const { setLocation, setForm, setEquipment, clearFilters } =
+  filterSlice.actions;
 export const filterReducer = filterSlice.reducer;

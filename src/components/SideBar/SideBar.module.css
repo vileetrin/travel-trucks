@@ -1,0 +1,43 @@
+.container {
+  margin-left: 64px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.filters {
+  color: #475467;
+  font-size: 16px;
+
+  margin: 0px;
+  padding: 0px;
+}
+
+.filtersContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.btn {
+  background-color: #e44848;
+  color: #ffffff;
+  font-size: 16px;
+  border: none;
+  border-radius: 100px;
+  margin-top: 24px;
+
+  width: 166px;
+  height: 56px;
+
+  transition: background-color 0.2s ease, outline 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #d84343;
+}
+
+.btn:focus {
+  outline: none;
+}
