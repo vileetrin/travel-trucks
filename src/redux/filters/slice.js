@@ -4,51 +4,46 @@ const filterSlice = createSlice({
   name: 'filters',
   initialState: {
     location: '',
-    form: '',
-    equipment: {
-      automatic: false,
-      petrol: false,
-      ac: false,
-      bathroom: false,
-      kitchen: false,
-      tv: false,
-      radio: false,
-      refrigerator: false,
-      microwave: false,
-      gas: false,
-      water: false,
-    },
+    type: '',
+    ac: false,
+    kitchen: false,
+    bathroom: false,
+    tv: false,
+    transmission: '',
   },
   reducers: {
     setLocation(state, action) {
       state.location = action.payload;
     },
-    setForm(state, action) {
-      state.form = action.payload;
+    setType(state, action) {
+      state.type = action.payload;
     },
-    setEquipment(state, action) {
-      state.equipment = action.payload;
+    setAC(state, action) {
+      state.ac = action.payload;
     },
-    clearFilters(state) {
-      state.location = '';
-      state.form = '';
-      state.equipment = {
-        automatic: false,
-        petrol: false,
-        ac: false,
-        bathroom: false,
-        kitchen: false,
-        tv: false,
-        radio: false,
-        refrigerator: false,
-        microwave: false,
-        gas: false,
-        water: false,
-      };
+    setKitchen(state, action) {
+      state.kitchen = action.payload;
+    },
+    setBathroom(state, action) {
+      state.bathroom = action.payload;
+    },
+    setTV(state, action) {
+      state.tv = action.payload;
+    },
+    setTransmission(state, action) {
+      state.transmission = action.payload;
     },
   },
 });
 
-export const { setLocation, setForm, setEquipment, clearFilters } =
-  filterSlice.actions;
+export const {
+  setLocation,
+  setAC,
+  setKitchen,
+  setTransmission,
+  setType,
+  setTV,
+  setBathroom,
+} = filterSlice.actions;
+
 export const filterReducer = filterSlice.reducer;

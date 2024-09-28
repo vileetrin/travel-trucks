@@ -15,7 +15,7 @@
   width: 1440px;
   height: 72px;
   display: flex;
-  justify-content: space-between;
+  gap: 495px;
   align-items: center;
   padding: 24px 64px;
   margin-right: auto;
@@ -41,7 +41,7 @@
 .navigation {
   display: flex;
   gap: 20px;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   flex-grow: 1;
   text-align: center;

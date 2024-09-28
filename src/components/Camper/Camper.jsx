@@ -1,12 +1,19 @@
 import PhotoSwiper from '../PhotoSwiper/PhotoSwiper';
 import Aquipment from '../Aquipment/Aquipment';
 import css from './Camper.module.css';
+import { useNavigate } from 'react-router-dom';
 
 import { useState } from 'react';
 
 export default function Camper({ camper }) {
-  const { description, gallery, location, name, price, rating, reviews } =
+  const { id, description, gallery, location, name, price, rating, reviews } =
     camper;
+
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/campers/${id}`);
+  };
 
   const [isFavourite, setIsFavourite] = useState(false);
   const [isRated, setIsRated] = useState(false);
@@ -62,7 +69,9 @@ export default function Camper({ camper }) {
         </div>
         <p className={css.text}>{description}</p>
         <Aquipment aquipment={camper} />
-        <button className={css.button}>Show more</button>
+        <button className={css.button} onClick={handleClick}>
+          Show more
+        </button>
       </div>
     </div>
   );

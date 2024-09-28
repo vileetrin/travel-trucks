@@ -1,12 +1,11 @@
 import css from './CampersList.module.css';
 import Camper from '../Camper/Camper';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectCampersList } from '../../redux/campers/selectors';
 import {
   selectPaginatedCampers,
   selectCurrentPage,
   selectTotalPages,
-} from '../../redux/campers/selectors.js';
+} from '../../redux/campers/selectors';
 import { setCurrentPage } from '../../redux/campers/slise';
 
 export default function CampersList() {
@@ -24,13 +23,11 @@ export default function CampersList() {
   return (
     <div className={css.container}>
       <ul className={css.list}>
-        {campers.map(camper => {
-          return (
-            <li key={camper.id}>
-              <Camper camper={camper} />
-            </li>
-          );
-        })}
+        {campers.map(camper => (
+          <li key={camper.id}>
+            <Camper camper={camper} />
+          </li>
+        ))}
       </ul>
       {currentPage < totalPages && (
         <button onClick={handleLoadMore} className={css.btn}>

@@ -1,5 +1,5 @@
 import { createSlice, createSelector } from '@reduxjs/toolkit';
-import { fetchCampers } from './operations';
+import { fetchCampers, fetchCamperById } from './operations';
 
 const campersSlice = createSlice({
   name: 'campers',
@@ -23,19 +23,40 @@ const campersSlice = createSlice({
       );
       state.paginatedCampers = [...state.paginatedCampers, ...newCampers];
     },
+
     setItemsPerPage: (state, action) => {
       state.itemsPerPage = action.payload;
       state.totalPages = Math.ceil(
         state.filteredItems.length / state.itemsPerPage
       );
     },
+
+    setFilteredCampers: (state, action) => {
+      const filters = action.payload;
+      state.filteredItems = state.items.filter(camper => {
+        return (
+          (!filters.location ||
+            camper.location
+              .toLowerCase()
+              .includes(filters.location.toLowerCase())) &&
+          (!filters.type || camper.form === filters.type) &&
+          (!filters.ac || camper.AC === filters.ac) &&
+          (!filters.kitchen || camper.kitchen === filters.kitchen) &&
+          (!filters.bathroom || camper.bathroom === filters.bathroom) &&
+          (!filters.tv || camper.TV === filters.tv) &&
+          (!filters.transmission || camper.transmission === 'automatic')
+        );
+      });
+      state.page = 1;
+      state.paginatedCampers = state.filteredList.slice(0, state.itemsPerPage);
+    },
   },
 
   extraReducers: builder => {
     builder
       .addCase(fetchCampers.pending, state => {
-        state.error = false;
         state.isLoading = true;
+        state.error = false;
       })
       .addCase(fetchCampers.fulfilled, (state, action) => {
         state.isLoading = false;
@@ -45,16 +66,30 @@ const campersSlice = createSlice({
         state.totalPages = Math.ceil(
           state.filteredItems.length / state.itemsPerPage
         );
-        const initialCampers = state.filteredItems.slice(0, state.itemsPerPage);
-        state.paginatedCampers = initialCampers;
+        state.paginatedCampers = state.filteredItems.slice(
+          0,
+          state.itemsPerPage
+        );
       })
       .addCase(fetchCampers.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+      .addCase(fetchCamperById.pending, (state, action) => {
+        state.isLoading = true;
+        state.error = false;
+      })
+      .addCase(fetchCamperById.fulfilled, (state, action) => {
+        state.items = action.payload;
+        state.isLoading = false;
+      })
+      .addCase(fetchCamperById.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
       });
   },
 });
 
-export const { setCurrentPage, setItemsPerPage } = campersSlice.actions;
-
+export const { setCurrentPage, setItemsPerPage, filterCampers } =
+  campersSlice.actions;
 export const campersReducer = campersSlice.reducer;

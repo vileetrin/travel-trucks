@@ -7,14 +7,20 @@ import Loader from '../Loader/Loader';
 
 const HomePage = lazy(() => import('../../pages/HomePage/HomePage'));
 const CatalogPage = lazy(() => import('../../pages/CatalogPage/CatalogPage'));
+const CamperDetailsPage = lazy(() =>
+  import('../../pages/CamperDetailsPage/CamperDetailsPage')
+);
 
 export default function App() {
   return (
     <Layout>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/campers" element={<CatalogPage />} />
-      </Routes>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/campers" element={<CatalogPage />} />
+          <Route path="/campers/:id" element={<CamperDetailsPage />} />
+        </Routes>
+      </Suspense>
     </Layout>
   );
 }

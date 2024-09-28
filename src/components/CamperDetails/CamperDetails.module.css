@@ -1,0 +1,79 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+
+  margin: 48px 64px;
+}
+
+.ratintImg,
+.locationImg {
+  width: 16px;
+  height: 16px;
+}
+
+.ratintImg {
+  fill: #ffc531;
+}
+
+.ratingContainer {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.locationContainer {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.locAndRewContainer {
+  display: flex;
+  gap: 16px;
+}
+
+.price {
+  margin: 0px;
+  margin-top: 8px;
+
+  color: #101828;
+  font-size: 24px;
+}
+
+.infoContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.title {
+  color: #101828;
+  font-size: 24px;
+}
+
+.location,
+.rewievs {
+  color: #101828;
+  font-size: 16px;
+}
+
+.galleryContainer {
+  display: flex;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+
+.galleryImage {
+  width: 292px;
+  height: 312px;
+
+  display: block;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.text {
+  color: #475467;
+  font-size: 16px;
+}
