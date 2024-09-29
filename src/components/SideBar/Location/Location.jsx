@@ -7,7 +7,7 @@ export default function Location({ setLocationValue }) {
   const handleInputChange = e => {
     const value = e.target.value;
     setInputValue(value);
-    setLocationValue(value); // Передаем значение в родительский компонент
+    setLocationValue(value);
   };
 
   return (

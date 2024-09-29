@@ -17,7 +17,6 @@ export default function CamperDetailsPage() {
   const camper = useSelector(selectCamperDetails);
   const isLoading = useSelector(selectLoading);
 
-  // console.log(camper);
   useEffect(() => {
     dispatch(fetchCamperById(id));
   }, [dispatch, id]);

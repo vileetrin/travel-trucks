@@ -51,6 +51,14 @@ const campersSlice = createSlice({
       state.page = 1;
       state.paginatedCampers = state.filteredItems.slice(0, state.itemsPerPage);
     },
+    campersPagination: state => {
+      state.currentPage += 1;
+      const nextItems = state.filteredItems.slice(
+        0,
+        state.currentPage * state.itemsPerPage
+      );
+      state.paginatedCampers = nextItems;
+    },
   },
 
   extraReducers: builder => {
@@ -82,7 +90,6 @@ const campersSlice = createSlice({
       })
       .addCase(fetchCamperById.fulfilled, (state, action) => {
         state.selectedCamper = action.payload;
-        // console.log(state.selectedCamper);
         state.isLoading = false;
       })
       .addCase(fetchCamperById.rejected, (state, action) => {
@@ -92,6 +99,10 @@ const campersSlice = createSlice({
   },
 });
 
-export const { setCurrentPage, setItemsPerPage, setFilteredCampers } =
-  campersSlice.actions;
+export const {
+  setCurrentPage,
+  setItemsPerPage,
+  setFilteredCampers,
+  campersPagination,
+} = campersSlice.actions;
 export const campersReducer = campersSlice.reducer;

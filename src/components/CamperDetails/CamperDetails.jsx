@@ -3,7 +3,6 @@ import css from './CamperDetails.module.css';
 export default function CamperDetails({ camper }) {
   const { name, location, reviews, rating, price, gallery, description } =
     camper;
-  //   console.log(camper);
 
   return (
     <div className={css.container}>

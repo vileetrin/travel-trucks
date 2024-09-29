@@ -45,7 +45,6 @@ export default function SideBar() {
       tv,
       transmission: finalTransmission,
     };
-    console.log(filters);
     dispatch(setFilteredCampers(filters));
   };
 

@@ -6,7 +6,7 @@ import {
   selectCurrentPage,
   selectTotalPages,
 } from '../../redux/campers/selectors';
-import { setCurrentPage } from '../../redux/campers/slise';
+import { setCurrentPage, campersPagination } from '../../redux/campers/slise';
 
 export default function CampersList() {
   const dispatch = useDispatch();
@@ -15,24 +15,30 @@ export default function CampersList() {
   const totalPages = useSelector(selectTotalPages);
 
   const handleLoadMore = () => {
-    if (currentPage < totalPages) {
-      dispatch(setCurrentPage(currentPage + 1));
-    }
+    dispatch(campersPagination());
   };
+
+  const isLastPage = currentPage >= totalPages || campers.length === 0;
 
   return (
     <div className={css.container}>
-      <ul className={css.list}>
-        {campers.map(camper => (
-          <li key={camper.id}>
-            <Camper camper={camper} />
-          </li>
-        ))}
-      </ul>
-      {currentPage < totalPages && (
-        <button onClick={handleLoadMore} className={css.btn}>
-          Load more
-        </button>
+      {campers.length === 0 ? (
+        <p>No campers found</p>
+      ) : (
+        <>
+          <ul className={css.list}>
+            {campers.map(camper => (
+              <li key={camper.id}>
+                <Camper camper={camper} />
+              </li>
+            ))}
+          </ul>
+          {!isLastPage && (
+            <button onClick={handleLoadMore} className={css.btn}>
+              Load more
+            </button>
+          )}
+        </>
       )}
     </div>
   );

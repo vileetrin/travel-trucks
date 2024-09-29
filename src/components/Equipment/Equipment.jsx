@@ -18,7 +18,7 @@ export default function Equipment({ equipment }) {
           item.condition && (
             <li key={index} className={css.listItem}>
               <svg className={css.listImg}>
-                <use href={`/public/icons.svg${item.icon}`}></use>
+                <use href={`icons.svg${item.icon}`}></use>
               </svg>
               <span className={css.text}>{item.name}</span>
             </li>
@@ -28,7 +28,7 @@ export default function Equipment({ equipment }) {
       {transmission && (
         <li className={css.listItem}>
           <svg className={css.listImg}>
-            <use href="/public/icons.svg#icon-automatic"></use>
+            <use href="icons.svg#icon-transmission"></use>
           </svg>
           <span>{transmission}</span>
         </li>
@@ -36,7 +36,7 @@ export default function Equipment({ equipment }) {
       {engine && (
         <li className={css.listItem}>
           <svg className={css.listImg}>
-            <use href="/public/icons.svg#icon-petrol"></use>
+            <use href="icons.svg#icon-petrol"></use>
           </svg>
           <span>{engine}</span>
         </li>
