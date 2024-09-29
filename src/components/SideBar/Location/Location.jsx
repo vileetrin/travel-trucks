@@ -1,11 +1,13 @@
 import css from './Location.module.css';
 import { useState } from 'react';
 
-export default function Location() {
+export default function Location({ setLocationValue }) {
   const [inputValue, setInputValue] = useState('');
 
   const handleInputChange = e => {
-    setInputValue(e.target.value);
+    const value = e.target.value;
+    setInputValue(value);
+    setLocationValue(value); // Передаем значение в родительский компонент
   };
 
   return (

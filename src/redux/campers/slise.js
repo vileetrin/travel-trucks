@@ -49,7 +49,7 @@ const campersSlice = createSlice({
         );
       });
       state.page = 1;
-      state.paginatedCampers = state.filteredList.slice(0, state.itemsPerPage);
+      state.paginatedCampers = state.filteredItems.slice(0, state.itemsPerPage);
     },
   },
 
@@ -92,6 +92,6 @@ const campersSlice = createSlice({
   },
 });
 
-export const { setCurrentPage, setItemsPerPage, filterCampers } =
+export const { setCurrentPage, setItemsPerPage, setFilteredCampers } =
   campersSlice.actions;
 export const campersReducer = campersSlice.reducer;
