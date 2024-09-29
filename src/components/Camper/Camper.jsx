@@ -1,5 +1,5 @@
 import PhotoSwiper from '../PhotoSwiper/PhotoSwiper';
-import Aquipment from '../Aquipment/Aquipment';
+import Equipment from '../Equipment/Equipment';
 import css from './Camper.module.css';
 import { useNavigate } from 'react-router-dom';
 
@@ -12,7 +12,7 @@ export default function Camper({ camper }) {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(`/campers/${id}`);
+    navigate(`/catalog/${id}`);
   };
 
   const [isFavourite, setIsFavourite] = useState(false);
@@ -68,7 +68,7 @@ export default function Camper({ camper }) {
           </div>
         </div>
         <p className={css.text}>{description}</p>
-        <Aquipment aquipment={camper} />
+        <Equipment equipment={camper} />
         <button className={css.button} onClick={handleClick}>
           Show more
         </button>

@@ -1,0 +1,59 @@
+.container {
+  width: 641px;
+  display: flex;
+  flex-direction: column;
+  gap: 44px;
+}
+
+.img {
+  width: 16px;
+  height: 16px;
+
+  fill: #ffc531;
+}
+
+.box {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+}
+
+.avatar {
+  background-color: #f2f4f7;
+  border-radius: 100px;
+  width: 60px;
+  height: 60px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.avatarSymbol {
+  color: #e44848;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.infoContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+}
+
+.name {
+  color: #101828;
+  font-size: 16px;
+}
+
+.text {
+  color: #475467;
+  font-size: 16px;
+}
+
+.commentBox {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}

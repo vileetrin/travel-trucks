@@ -1,7 +1,7 @@
-import css from './Aquipment.module.css';
+import css from './Equipment.module.css';
 
-export default function Aquipment({ aquipment }) {
-  const { AC, bathroom, kitchen, TV, radio, transmission, engine } = aquipment;
+export default function Equipment({ equipment }) {
+  const { AC, bathroom, kitchen, TV, radio, transmission, engine } = equipment;
 
   const equipmentList = [
     { name: 'AC', icon: '#icon-ac', condition: AC },

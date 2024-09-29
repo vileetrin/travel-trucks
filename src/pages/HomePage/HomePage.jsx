@@ -6,7 +6,7 @@ export default function HomePage() {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate('/campers');
+    navigate('/catalog');
   };
   return (
     <div className={css.container}>
