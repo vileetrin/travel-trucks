@@ -47,3 +47,14 @@
   flex-grow: 1;
   text-align: center;
 }
+
+.favourites {
+  width: 20px;
+  height: 20px;
+  stroke: #101828;
+  transition: stroke 0.3s;
+}
+
+.favouritesActive {
+  stroke: #ff3c60;
+}

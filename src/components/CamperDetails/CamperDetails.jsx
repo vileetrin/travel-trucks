@@ -25,7 +25,13 @@ export default function CamperDetails({ camper }) {
             <p className={css.location}>{location}</p>
           </div>
         </div>
-        <h2 className={css.price}>€{price}</h2>
+        <h2 className={css.price}>
+          €
+          {price.toLocaleString('en', {
+            useGrouping: false,
+            minimumFractionDigits: 2,
+          })}
+        </h2>
       </div>
       <div className={css.galleryContainer}>
         {gallery.map((img, index) => (

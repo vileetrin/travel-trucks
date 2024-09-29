@@ -24,6 +24,25 @@ export default function Navigation() {
         >
           Catalog
         </NavLink>
+        <NavLink
+          to="/favourites"
+          className={({ isActive }) => {
+            const linkClassName = isActive
+              ? `${css.navLink} ${css.navLinkActive}`
+              : css.navLink;
+            return linkClassName;
+          }}
+        >
+          {({ isActive }) => (
+            <svg
+              className={`${css.favourites} ${
+                isActive ? css.favouritesActive : ''
+              }`}
+            >
+              <use href="icons.svg#icon-favourite"></use>
+            </svg>
+          )}
+        </NavLink>
       </nav>
     </div>
   );

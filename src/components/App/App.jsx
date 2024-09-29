@@ -12,6 +12,9 @@ const CamperDetailsPage = lazy(() =>
 );
 const CamperFeatures = lazy(() => import('../CamperFeatures/CamperFeatures'));
 const CamperReviews = lazy(() => import('../CamperReviews/CamperReviews'));
+const FavouritesPage = lazy(() =>
+  import('../../pages/FavouritesPage/FavouritesPage')
+);
 
 export default function App() {
   return (
@@ -24,6 +27,7 @@ export default function App() {
             <Route path="features" element={<CamperFeatures />} />
             <Route path="reviews" element={<CamperReviews />} />
           </Route>
+          <Route path="/favourites" element={<FavouritesPage />} />
         </Routes>
       </Suspense>
     </Layout>

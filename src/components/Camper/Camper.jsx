@@ -2,24 +2,31 @@ import PhotoSwiper from '../PhotoSwiper/PhotoSwiper';
 import Equipment from '../Equipment/Equipment';
 import css from './Camper.module.css';
 import { useNavigate } from 'react-router-dom';
-
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addFavourites, deleteFavourites } from '../../redux/favourites/slice';
 
 export default function Camper({ camper }) {
   const { id, description, gallery, location, name, price, rating, reviews } =
     camper;
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const favorites = useSelector(state => state.favourites.items);
+  const isFavourite = favorites.find(fav => fav.id === id);
 
   const handleClick = () => {
     navigate(`/catalog/${id}`);
   };
 
-  const [isFavourite, setIsFavourite] = useState(false);
   const [isRated, setIsRated] = useState(false);
 
   const handleFavouriteClick = () => {
-    setIsFavourite(prevState => !prevState);
+    if (isFavourite) {
+      dispatch(deleteFavourites(id));
+    } else {
+      dispatch(addFavourites(camper));
+    }
   };
 
   const handleRatingClick = () => {
@@ -36,12 +43,18 @@ export default function Camper({ camper }) {
         <div className={css.header}>
           <h2 className={css.title}>{name}</h2>
           <div className={css.priceContainer}>
-            <p className={css.price}>€{price}</p>
+            <p className={css.price}>
+              €
+              {price.toLocaleString('en', {
+                useGrouping: false,
+                minimumFractionDigits: 2,
+              })}
+            </p>
             <svg
               className={`${css.favourite} ${
                 isFavourite ? css.favouriteActive : ''
               }`}
-              onClick={handleFavouriteClick}
+              onClick={() => handleFavouriteClick(id)}
             >
               <use href="icons.svg#icon-favourite"></use>
             </svg>
