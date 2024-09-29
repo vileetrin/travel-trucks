@@ -34,7 +34,7 @@ export default function VehicleType({ setTypeValue }) {
               }}
             >
               <svg className={css.listImg}>
-                <use href={`/public/icons.svg#icon-${item}`}></use>
+                <use href={`icons.svg#icon-${item}`}></use>
               </svg>
               <p className={css.text}>
                 {item.charAt(0).toUpperCase() + item.slice(1).replace('-', ' ')}

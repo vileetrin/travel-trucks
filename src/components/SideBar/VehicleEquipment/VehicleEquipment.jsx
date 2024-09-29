@@ -48,7 +48,7 @@ export default function VehicleEquipment({
               }}
             >
               <svg className={css.listImg}>
-                <use href={`/public/icons.svg#icon-${item}`}></use>
+                <use href={`icons.svg#icon-${item}`}></use>
               </svg>
               <p className={css.text}>
                 {item === 'transmission'

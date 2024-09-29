@@ -43,7 +43,7 @@ export default function Camper({ camper }) {
               }`}
               onClick={handleFavouriteClick}
             >
-              <use href="/public/icons.svg#icon-favourite"></use>
+              <use href="icons.svg#icon-favourite"></use>
             </svg>
           </div>
         </div>
@@ -53,7 +53,7 @@ export default function Camper({ camper }) {
               className={`${css.ratingImg} ${isRated ? css.ratingActive : ''}`}
               onClick={handleRatingClick}
             >
-              <use href="/public/icons.svg#icon-rating"></use>
+              <use href="icons.svg#icon-rating"></use>
             </svg>
             <p className={css.rewievs}>
               {rating} (
@@ -62,7 +62,7 @@ export default function Camper({ camper }) {
           </div>
           <div className={css.locationContainer}>
             <svg className={css.locationImg}>
-              <use href="/public/icons.svg#icon-location"></use>
+              <use href="icons.svg#icon-location"></use>
             </svg>
             <p className={css.location}>{location}</p>
           </div>

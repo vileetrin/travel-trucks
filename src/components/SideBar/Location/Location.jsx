@@ -17,7 +17,7 @@ export default function Location({ setLocationValue }) {
 
       <div className={css.content}>
         <svg className={`${css.locationImg} ${inputValue ? css.active : ''}`}>
-          <use href="/public/icons.svg#icon-location"></use>
+          <use href="icons.svg#icon-location"></use>
         </svg>
         <input
           id="location"

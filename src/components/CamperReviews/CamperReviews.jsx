@@ -32,7 +32,7 @@ export default function CamperReviews() {
                   <div>
                     {Array.from({ length: reviewerRating }, (_, idx) => (
                       <svg key={idx} className={css.img}>
-                        <use href="/public/icons.svg#icon-rating"></use>
+                        <use href="icons.svg#icon-rating"></use>
                       </svg>
                     ))}
                   </div>
